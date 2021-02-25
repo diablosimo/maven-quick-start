@@ -10,6 +10,8 @@ syntaxe: Plugin +goal name
 Ex: compile goal and Compiler plugin (copiler:compile)
 ##Phases
 ##Lifecycles
+* jar : compile, package , install
+* clean: clean
 
 #Directory conventions in maven
 standard directory template: maven will look on them without any configuration.
@@ -24,4 +26,11 @@ if project is a web application, maven will look on :
 
 need different locations : **override POM**.
 
+#Target directory
+intermediate folders for maven to arrive to jar file
+* mvn clean: remove target folder.
 
+>mvn clean package
+
+install : maven local repository
+`[INFO] Installing C:\Users\simob\IdeaProjects\devops\pom.xml to C:\Users\simob\.m2\repository\com\irisi\maven\1.0-SNAPSHOT\maven-1.0-SNAPSHOT.pom`
