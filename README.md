@@ -66,3 +66,65 @@ of our dependency, that is our plugin, will also be downloaded as needed.
 
 And then, finally, we're able to go through the process as normal and compile our code, which now, since we're using the correct version of the source and target
 for our particular version of Java installed, we're able to take advantage of the more modern aspects, or features, within the Java language.
+
+#Dependency management
+One of the main strengths of Maven is dependency management.
+
+By default, Maven comes configured to resolve dependencies from the Maven central repository online;
+
+however, additional repositories can be configured.
+
+Also, any dependencies will attempt to look locally first, in the private Maven repository that acts much like a cache.
+
+When specifying a dependency, we must determine which scope to place the dependency for our project.
+
+Maven supports six dependency scopes, although only four are widely used; 
+
+the six scopes are:
+
+compile, runtime, test, provided, system, and import.
+
+### Compile 
+scope which is the default scope, signifies the dependency is required for compilation and execution of the project.
+
+Compile scope dependencies will be added to any dependent projects;
+
+for example, a web module will inherit any compile scope dependencies from a library module.
+
+Compile dependencies are included within container projects, like web applications.
+
+###Runtime 
+scope signifies the dependency is needed during the project's deployment runtime, but isn't needed for compilation.
+
+Runtime dependencies are included with the container projects, like web applications.
+
+###Test 
+scope is for dependencies needed during unit testing.
+
+Test dependencies are not needed for compilation of the main source code, nor deployment to the runtime environment.
+
+###Provided 
+scope tells Maven the dependencies will be provided by the target runtime or deployment system.
+
+For example, the Java enterprise libraries, provided by an application server.
+
+###used system 
+The rarely scope tells Maven about dependencies that are local to the project, or someplace on your system, like in a "lib" folder.
+
+However, this approach defeats the point of Maven's dependency system, and should be avoided. The only example of using this scope would be
+in the rare case of some third-party libraries with excessively restrictive licenses that prevent them being used in a shared repository.
+
+In that case, for legal reasons, you might be forced to use
+
+system scope for those type of dependencies.
+
+###import 
+scope is rarely used;
+this scope is only used in specialized cases to import or replace dependencies from other projects.
+
+
+
+Maven provides the flexibility to handle most of the different ways dependencies are used within their projects.
+You will most commonly work with compile and test scopes, and then occasionally with provided and runtime.
+
+#Archtype
